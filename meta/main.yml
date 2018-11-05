@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: atlassian-jira
+  role_name: phpmyadmin
   author: Peter Hudec
   description: install phpMyAdmin from sources
 
