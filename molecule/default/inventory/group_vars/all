@@ -1,0 +1,12 @@
+---
+
+pma_version: '4.8.3'
+
+pma_dir_tmp: /srv
+pma_install_remote: /srv
+pma_link_remote: /srv/mysql
+
+
+pma_files_user: root
+pma_files_group: root
+pma_files_perms: "0644"

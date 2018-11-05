@@ -1,0 +1,42 @@
+---
+
+- name: check the pma_version
+  assert:
+    that:
+      - "pma_version is not none"
+    fail_msg: "set the pma_version variable"
+
+- name: "common | set os specific variables"
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "os-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "os-{{ ansible_distribution }}.yml"
+    - "os-{{ ansible_os_family }}.yml"
+    - "os-default.yml"
+  tags:
+    - always
+
+- name: include facts tasks
+  include: common-facts.yml
+  tags:
+    - always
+
+- name: include packages tasks
+  include: packages-{{ ansible_os_family }}.yml
+  tags:
+    - pma
+    - pma:packages
+
+- name: include download tasks
+  include: common-download.yml
+  tags:
+    - pma
+    - pma:download
+
+- name: include install tasks
+  include: common-install.yml
+  tags:
+    - pma
+    - pma:install

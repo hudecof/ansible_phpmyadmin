@@ -1,0 +1,10 @@
+---
+
+- name: "common | version"
+  debug:
+    msg: "{{ pma_version }} will be installed"
+
+- name: "common | download package"
+  local_action:
+    get_url url="{{ pma_download_url }}" dest="{{ pma_download_local }}"
+  become: false

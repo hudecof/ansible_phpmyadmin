@@ -1,0 +1,7 @@
+---
+- name: set basic facts
+  set_fact:
+    pma_filename_base: phpMyAdmin-{{ pma_version }}-all-languages
+    pma_download_url: "{{ pma_base_url }}/{{ pma_version }}/phpMyAdmin-{{ pma_version }}-all-languages.tar.gz"
+    pma_download_local: "{{ pma_dir_cache }}/phpMyAdmin-{{ pma_version }}-all-languages.tar.gz"
+    pma_upload_remote: "{{ pma_dir_tmp }}/phpMyAdmin-{{ pma_version }}-all-languages.tar.gz"

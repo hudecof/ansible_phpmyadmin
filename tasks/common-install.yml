@@ -1,0 +1,28 @@
+---
+
+- name: "common | copy package"
+  copy:
+    src: "{{ pma_download_local }}"
+    dest: "{{ pma_upload_remote }}"
+    owner: "{{ pma_files_user | default(omit) }}"
+    group: "{{ pma_files_group | default(omit) }}"
+    mode: "{{ pma_files_perms | default(omit) }}"
+
+- name: extract the phpMyAdmin
+  unarchive:
+    remote_src: true
+    creates: "{{ pma_install_remote }}/{{ pma_filename_base }}"
+    owner: "{{ pma_files_user | default(omit) }}"
+    group: "{{ pma_files_group | default(omit) }}"
+    src: "{{ pma_upload_remote }}"
+    dest: "{{ pma_install_remote }}"
+
+- name: create symbolic link
+  file:
+    state: link
+    src: "{{ pma_install_remote }}/{{ pma_filename_base }}"
+    dest: "{{ pma_link_remote }}"
+    owner: "{{ pma_files_user | default(omit) }}"
+    group: "{{ pma_files_group | default(omit) }}"
+    mode: "{{ pma_files_perms | default(omit) }}"
+  when: pma_link_remote is not none

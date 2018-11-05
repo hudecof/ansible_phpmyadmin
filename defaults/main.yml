@@ -1,0 +1,15 @@
+---
+
+pma_version: null
+pma_dir_local_dir_base: /var/www/
+
+pma_dir_tmp: /tmp
+pma_dir_cache: /tmp
+pma_install_remote: /var/www
+pma_link_remote: /var/www/mysql
+
+# pma_files_user: root
+# pma_files_group: root
+# pma_files_perms: 0644
+
+pma_packages: "{{ __pma_packages }}"

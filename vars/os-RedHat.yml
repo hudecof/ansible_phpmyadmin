@@ -1,0 +1,4 @@
+---
+
+__pma_packages:
+  - { 'name': 'libselinux-python', 'state': 'present' }

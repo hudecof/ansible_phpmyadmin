@@ -1,0 +1,4 @@
+---
+# vars file for hudecof.phpmyadmin
+
+pma_base_url: https://files.phpmyadmin.net/phpMyAdmin
