@@ -26,3 +26,5 @@
     group: "{{ pma_files_group | default(omit) }}"
     mode: "{{ pma_files_perms | default(omit) }}"
   when: pma_link_remote is not none
+  tags:
+    - notest
